@@ -7,10 +7,10 @@
  */
 
 import useSWR from "swr";
-import { fetcher } from "./useApi";
+import { fetcher, API_BASE } from "./useApi";
 import { useState } from "react";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 const AI_SWR_OPTIONS = {
   refreshInterval: 600000, // 10분

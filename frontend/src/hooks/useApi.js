@@ -3,7 +3,8 @@
  * -- SWR 기반으로 자동 캐싱, 리페치, 에러 핸들링 제공
  */
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// 후행 슬래시(/)를 제거하여 중복 슬래시 문제 방지
+export const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/$/, "");
 
 /**
  * SWR용 기본 fetcher 함수

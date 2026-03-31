@@ -9,8 +9,9 @@
 
 import { useState, useCallback } from "react";
 import ChartCard from "../common/ChartCard";
+import { API_BASE } from "../../hooks/useApi";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 const SIGNAL_COLORS = {
   "매수": "hsl(150, 70%, 45%)",
