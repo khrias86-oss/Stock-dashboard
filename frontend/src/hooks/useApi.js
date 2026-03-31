@@ -4,7 +4,15 @@
  */
 
 // 후행 슬래시(/)를 제거하여 중복 슬래시 문제 방지
-export const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000").replace(/\/$/, "");
+const rawUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+export const API_BASE = rawUrl.replace(/\/$/, "");
+
+if (typeof window !== "undefined") {
+  console.log("🌐 Current API BASE:", API_BASE);
+  if (rawUrl === "http://localhost:8000") {
+    console.warn("⚠️ Warning: NEXT_PUBLIC_API_URL is missing. Falling back to localhost.");
+  }
+}
 
 /**
  * SWR용 기본 fetcher 함수
