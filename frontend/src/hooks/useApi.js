@@ -4,7 +4,8 @@
  */
 
 // 후행 슬래시(/)를 제거하여 중복 슬래시 문제 방지
-const rawUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// 환경변수가 없을 경우의 기본값을 실제 보급된 Render 주소로 고정합니다.
+const rawUrl = process.env.NEXT_PUBLIC_API_URL || "https://stock-dashboard-c8ht.onrender.com";
 export const API_BASE = rawUrl.replace(/\/$/, "");
 
 if (typeof window !== "undefined") {
