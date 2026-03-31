@@ -32,15 +32,19 @@ app = FastAPI(
 # === CORS 설정 (프론트엔드에서 API 호출 허용) ===
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "*",  # 테스트를 위해 모든 도메인 허용
-        settings.FRONTEND_URL,
-        "http://localhost:3000",
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],  # 모든 도메인 허용
+    allow_credentials=False, # '*' 사용 시 False로 설정해야 브라우저에서 차단하지 않음
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# === 간단한 요청 로깅 (디버깅용) ===
+@app.middleware("http")
+async def log_requests(request, call_next):
+    logger.info(f"[Request] {request.method} {request.url.path}")
+    response = await call_next(request)
+    logger.info(f"[Response] Status: {response.status_code}")
+    return response
 
 # === 라우터 등록 ===
 app.include_router(macro.router)
