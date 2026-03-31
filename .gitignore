@@ -1,0 +1,16 @@
+# Python
+backend/venv/
+backend/.env
+backend/__pycache__/
+backend/*.db
+backend/*.xlsx
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/.env*
+frontend/.vercel/
+
+# OS
+.DS_Store
+Thumbs.db
